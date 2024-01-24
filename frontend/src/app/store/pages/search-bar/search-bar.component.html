@@ -1,0 +1,56 @@
+<main class="bg-gray-100">
+  <div
+    class="flex flex-col h-screen max-w-max items-center justify-center mx-auto gap-5"
+  >
+    <section>
+      <img
+        src="../../../../assets/logo-no-background.png"
+        alt="Logo principal"
+        class="h-44 w-full lg:h-80"
+      />
+    </section>
+    <section class="text-center lg:flex lg:items-center">
+      <h1 class="text-2xl font-bold text-balance text-gray-900 sm:text-3xl">
+        ! Welcome to Universal Store !
+      </h1>
+    </section>
+    <section class="w-full lg:flex">
+      <!-- search box -->
+      <div
+        class="relative m-auto mb-20 w-full"
+      >
+        <label class="sr-only" for="search"> Search </label>
+
+        <input
+          class="h-12 w-full lg:w-full rounded-full border-1 border-gray-300 bg-white pe-10 ps-4 text-sm shadow-sm sm:w-56"
+          id="search"
+          type="search"
+          placeholder="Smartphones, Groceries, Whatever!..."
+          [formControl]="searchInput"
+          (keydown.enter)="onSearch()"
+        />
+
+        <button
+          type="button"
+          class="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-gray-50 p-2 text-gray-600 transition hover:text-gray-700"
+        >
+          <span class="sr-only">Search</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
+      </div>
+    </section>
+  </div>
+</main>

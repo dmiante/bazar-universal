@@ -13,14 +13,15 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseURL}/products`);
+    return this.http.get<Product[]>(`${this.baseURL}/products`)
   }
 
-  getProductsBySearch(query: string) {
-    return this.http.get<Product[]>(`${this.baseURL}/items?q=${query}`);
+  searchProduct(query: string): Observable<Product[]> {
+    const apiUrl: string = `${this.baseURL}/items?q=${query}`;
+    return this.http.get<Product[]>(apiUrl)
   }
 
-  getProductById(id: string): Observable<Product|undefined> {
-    return this.http.get<Product>(`${this.baseURL}/products/${id}`);
+  searchProductById(id: string): Observable<Product|undefined> {
+    return this.http.get<Product>(`${this.baseURL}/products/${id}`)
   }
 }
