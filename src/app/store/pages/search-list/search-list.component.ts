@@ -22,7 +22,6 @@ export class SearchListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      console.log(Object.values(params).toString());
       this.term = Object.values(params).toString();
     });
     this.productService.searchProduct(this.term).subscribe((p) => {

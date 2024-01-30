@@ -1,20 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { env } from 'src/env/env';
 import { Pro, Product } from '../interfaces/product.interface';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private baseURL: string = env.baseUrl;
-  private baseURL2: string = '../../../assets/products.json';
+  private baseURL: string = '../../../assets/products.json';
 
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Pro> {
-    const apiurl = `${this.baseURL2}`;
+    const apiurl = `${this.baseURL}`;
     const res = this.http.get<Pro>(apiurl);
     return res;
   }
@@ -39,8 +37,6 @@ export class ProductsService {
   }
 
   searchProductById(id: number): Observable<Product | undefined> {
-    // const res = this.http.get<Product>(`${this.baseURL2}/items/${id}`);
-    // return res;
     return this.getProducts().pipe(
       map((p) => {
         return p.find((p) => p.id === id);
