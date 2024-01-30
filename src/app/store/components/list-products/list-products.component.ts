@@ -7,7 +7,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'card-list-products',
   standalone: true,
-  imports: [CommonModule, SearchListComponent,RouterLink, RouterOutlet],
+  imports: [CommonModule, SearchListComponent, RouterLink, RouterOutlet],
   templateUrl: './list-products.component.html',
 })
 export class ListProductsComponent implements OnInit {

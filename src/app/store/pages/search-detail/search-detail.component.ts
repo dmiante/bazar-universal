@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 import { Product } from '../../interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
@@ -9,30 +8,23 @@ import { ProductsService } from '../../services/products.service';
 @Component({
   selector: 'app-search-detail',
   standalone: true,
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './search-detail.component.html',
 })
 export class SearchDetailComponent implements OnInit {
-
-  public product?: Product
+  public product?: Product;
 
   constructor(
     private productService: ProductsService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-    ){}
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(switchMap(({ id }) => this.productService.searchProductById(id)))
-      .subscribe((product) => {
-        if (!product) return this.router.navigate(['/items']);
-        this.product = product;
-        return;
+    this.activatedRoute.params.subscribe((productID) => {
+      const key = Object.values(productID);
+      this.productService.searchProductById(Number(key)).subscribe((list) => {
+        this.product = list;
       });
+    });
   }
-
-
 }

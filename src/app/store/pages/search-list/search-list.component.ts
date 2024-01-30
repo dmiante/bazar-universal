@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
 import { ListProductsComponent } from '../../components/list-products/list-products.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search-list',
@@ -12,10 +13,20 @@ import { ListProductsComponent } from '../../components/list-products/list-produ
 })
 export class SearchListComponent implements OnInit {
   public products: Product[] = [];
+  public term: string = '';
 
-  constructor(private productService: ProductsService) {}
+  constructor(
+    private productService: ProductsService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((p) => (this.products = p));
+    this.route.queryParams.subscribe((params) => {
+      console.log(Object.values(params).toString());
+      this.term = Object.values(params).toString();
+    });
+    this.productService.searchProduct(this.term).subscribe((p) => {
+      this.products = p;
+    });
   }
 }

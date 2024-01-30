@@ -1,9 +1,9 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { SearchBarComponent } from "./pages/search-bar/search-bar.component";
-import { SearchListComponent } from "./pages/search-list/search-list.component";
-import { SearchDetailComponent } from "./pages/search-detail/search-detail.component";
-import { LayoutPageComponent } from "./pages/layout-page/layout-page.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SearchBarComponent } from './pages/search-bar/search-bar.component';
+import { SearchListComponent } from './pages/search-list/search-list.component';
+import { SearchDetailComponent } from './pages/search-detail/search-detail.component';
+import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 
 const routes: Routes = [
   {
@@ -29,7 +29,6 @@ const routes: Routes = [
     ],
   },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
